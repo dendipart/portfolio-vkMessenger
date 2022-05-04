@@ -1,0 +1,51 @@
+Store - JS Object represent your app state.
+
+Dispatch - Function that get action and send to reducer;
+
+Reducer - Take your action from dispatch and create new Store (state);
+
+Action/ActionCreator - JS Object that contain TYPE and PAYLOAD (or without payload);
+
+Action TYPE - just string. "CHANGE_THEME";
+Action Payload - some data. "white";
+
+action 
+
+
+dispatch({
+  type: "CHANGE_THEME",
+  payload: {
+    themeColor: "white"
+  }
+});
+
+
+store = {
+  name: "John",
+  phone: "1231212",
+  theme: "black"
+};
+
+reducer (state, action) {
+  switch(action.type) {
+    case "CHANGE_THEME":
+      return {...state, {theme: action.payload.themeColor}}
+  }
+}
+
+store = {
+  name: "John",
+  phone: "1231212",
+  theme: "white"
+};
+
+function HOCComponent() {
+  const какиетоСвоиПропсы = {};
+
+  return обернутыйИмКомпонент(какиеТоСвоиПропсы);
+}
+// High Ordered Component;
+// Функции высшего порядка; прямой аналог HOC Компонент высшего порядка
+HOCComponent(App);
+
+https://codesandbox.io/s/github/reduxjs/redux/tree/master/examples/counter-vanilla?file=/index.html
