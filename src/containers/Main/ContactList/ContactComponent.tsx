@@ -1,20 +1,16 @@
-import React, { useState } from "react";
+import React from "react";
 import { useEffect } from "react";
 import {
   Avatar,
-  Button,
   List,
   ListItem,
   ListItemText,
-  Paper,
   Typography,
 } from "@mui/material";
-import Link from "@mui/material/Link";
 import Box from "@mui/material/Box";
 
 import { useAppDispatch, useAppSelector } from "~/store";
 import { fetchContacts, selectContactsList } from "~/store/contacts";
-import axios from "axios";
 import styled from "@emotion/styled";
 
 //--------------------------------------------------------------------------------------------------------------------------------------------
@@ -23,11 +19,13 @@ export default function ContactComponent() {
   const contactList = useAppSelector(selectContactsList);
   const dispatch = useAppDispatch();
 
-  const user_id = localStorage.getItem("user_id");
-
   useEffect(() => {
     dispatch(fetchContacts());
   }, [dispatch]);
+
+  const handleChat = (arg: any) => {
+    console.log(arg);
+  };
 
   return (
     <StyledBox>
@@ -35,9 +33,7 @@ export default function ContactComponent() {
         {contactList.map((items: any, index: any) => (
           <StyledListItem
             key={index}
-            onClick={() =>
-              localStorage.setItem("user_id", items.conversation.peer.id)
-            }
+            onClick={() => handleChat(items.conversation.peer.id)}
           >
             <StyledAvatar />
             <Message>

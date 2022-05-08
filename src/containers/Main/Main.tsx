@@ -32,23 +32,19 @@ export default function Main(props: Props) {
   };
 
   const tokenskiy =
-    "26085fd35498e4ac88e04fcfd3829c36051de6bf10650753858a899e0225386836377daa1abf654ff0568"; ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    "a14d54c043c5d3c9d3178783ee6703f8dd63d3c539a403966c18adafd869c33b408fe89a59d3d8bf513b6"; ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
   const [chat, setChat] = useState([]);
 
   const handleChat = () => {
-    // useEffect(() => {
     const chats = async () => {
       const response = await axios(
         `http://localhost:3500/method/messages.getHistory?count=20&user_id=${user_id}&access_token=${tokenskiy}&v=5.131`
       );
       setChat(response.data.response.items);
       console.log("chats", chat);
-      // .then((response) => setChat(response.data.response.items));
-      // .then((response) => console.log(response.data.response.items));
     };
     chats();
-    // }, []);
   };
 
   // setTimeout(handleChat, 2500);
@@ -121,6 +117,7 @@ export default function Main(props: Props) {
       };
     });
     console.log("вот", arr2);
+
     return (
       <>
         {arr2.map((i: any) => (
@@ -177,7 +174,7 @@ export default function Main(props: Props) {
             open
           >
             {drawer}
-            <div onClick={() => handleChat()}>
+            <div onClick={handleChat}>
               <ContactComponent />
             </div>
           </StyledDrawer>

@@ -38,17 +38,7 @@ export const fetchContacts = createAsyncThunk<Contact[]>(
   "contacts/fetchContacts",
   async () => {
     const response = await axios.get<Contact[]>(
-      // "https://api.vk.com/method/friends.get?access_token=2bd046babcf9fb9d8009997e68959c01f71f77406d8f05270c3be8c23396e876e125c2b8b43b449c4556b&v=5.131"
-      // "https://jsonplaceholder.typicode.com/users"
-      // "http://localhost:3500/method/friends.get?fields=nickname&access_token=b70043aa5c7f7568823709ed01735cc76214152a7888cc418f21bf250efc951671a3bb87edc86be6bd1a7&v=5.131"
-
-      // `http://localhost:3500/method/friends.get?fields=nickname&access_token=${token}&v=5.131`
-      // "http://localhost:3500/method/messages.getHistory?count=20&user_id=718915126&access_token=99176bcc16b7fccdfe5234c18cc959fb44636e565294cbd87161b5901ed25d54fc83f58bdc7105fd4f922&v=5.131"
-
-      // `http://localhost:3500/method/messages.getHistory?count=20&user_id=718915126&access_token=${token}&v=5.131`
-      // "http://localhost:3500"
-
-      `http://localhost:3500/method/messages.getConversations?access_token=26085fd35498e4ac88e04fcfd3829c36051de6bf10650753858a899e0225386836377daa1abf654ff0568&v=5.131`
+      `http://localhost:3500/method/messages.getConversations?access_token=a14d54c043c5d3c9d3178783ee6703f8dd63d3c539a403966c18adafd869c33b408fe89a59d3d8bf513b6&v=5.131`
     );
     // @ts-ignore
     console.log(response.data.response.items);
