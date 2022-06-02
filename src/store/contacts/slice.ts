@@ -38,7 +38,7 @@ export const fetchContacts = createAsyncThunk<Contact[]>(
   "contacts/fetchContacts",
   async () => {
     const response = await axios.get<Contact[]>(
-      `http://localhost:3500/method/messages.getConversations?access_token=a14d54c043c5d3c9d3178783ee6703f8dd63d3c539a403966c18adafd869c33b408fe89a59d3d8bf513b6&v=5.131`
+      `http://localhost:3500/method/messages.getConversations?access_token=&v=5.131`
     );
     // @ts-ignore
     console.log(response.data.response.items);

@@ -11,7 +11,6 @@ import { INPUT_NAMES } from "../../constants";
 import {
   useAppDispatch,
   setUser,
-  getToken,
   useAppSelector,
   selectUser,
 } from "../../store";

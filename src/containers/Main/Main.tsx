@@ -31,8 +31,7 @@ export default function Main(props: Props) {
     setMobileOpen(!mobileOpen);
   };
 
-  const tokenskiy =
-    "a14d54c043c5d3c9d3178783ee6703f8dd63d3c539a403966c18adafd869c33b408fe89a59d3d8bf513b6"; ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  const tokenskiy = ""; ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
   const [chat, setChat] = useState([]);
 
@@ -53,15 +52,15 @@ export default function Main(props: Props) {
 
   const user_id: any = localStorage.getItem("user_id");
 
-  useEffect(() => {
-    console.log("friends");
-    axios
-      .get(
-        `http://localhost:3500/method/friends.get?fields=nickname&access_token=${tokenskiy}&v=5.131`
-      )
-      .then((response) => setUserName(response.data.response.items));
-    // .then((response) => console.log(response.data.response.items));
-  }, []);
+  // useEffect(() => {
+  //   console.log("friends");
+  //   axios
+  //     .get(
+  //       `http://localhost:3500/method/friends.get?fields=nickname&access_token=${tokenskiy}&v=5.131`
+  //     )
+  //     .then((response) => setUserName(response.data.response.items));
+  //   // .then((response) => console.log(response.data.response.items));
+  // }, []);
 
   function handleSend() {
     axios.post(
@@ -72,7 +71,6 @@ export default function Main(props: Props) {
   const [message, setMessage] = useState([]);
 
   const postInput = (event: any) => {
-    // console.log(message);
     setMessage(event.target.value);
     event.preventDefault();
   };

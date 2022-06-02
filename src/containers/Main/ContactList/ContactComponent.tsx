@@ -88,7 +88,3 @@ const StyledListItem = styled(ListItem)`
 const StyledAvatar = styled(Avatar)`
   margin: 8px;
 `;
-
-// const StyledListItemText = styled.p`
-//   margin-left: 10px;
-// `;
