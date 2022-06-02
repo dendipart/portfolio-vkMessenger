@@ -1,9 +1,0 @@
-1. Поправить везде форматирование done
-2. убрать ненужные файлы done 
-3. Убрать ненужные и отсортировать по правилу skidisch don
-
-const StyledListItem = styled(ListItem)`
-  &:hover {
-    background: black;
-  }
-`
