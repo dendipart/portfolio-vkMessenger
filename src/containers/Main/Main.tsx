@@ -31,8 +31,8 @@ export default function Main(props: Props) {
     setMobileOpen(!mobileOpen);
   };
 
-  const tokenskiy = ""; ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
+  const tokenskiy =
+    "vk1.a.o0zjqFWNvsZ8fvUOxMjp7ijsTHTTeNxN_B42xFAyJjpKqmb7FGh3G7Y7uKnceI_sSDIt5p8aHiirIKaStGNadNGYxkrYA0nfR_tPiCto5bvGoWCzC2yypuSvfwCjy1FGGGMRi81loZI9zuu-qcL_Jv4CoduSFBkQuW8GDQx8MybSvWQK1z481vuZE9UayjF0";
   const [chat, setChat] = useState([]);
 
   const handleChat = () => {
@@ -43,6 +43,12 @@ export default function Main(props: Props) {
       setChat(response.data.response.items);
       console.log("chats", chat);
     };
+    axios
+      .get(
+        `http://localhost:3500/method/friends.get?fields=nickname&access_token=${tokenskiy}&v=5.131`
+      )
+      .then((response) => setUserName(response.data.response.items));
+    // .then((response) => console.log(response.data.response.items));
     chats();
   };
 
@@ -85,7 +91,7 @@ export default function Main(props: Props) {
     //@ts-ignore
     window !== undefined ? () => document.body : undefined;
 
-  const arr1: any = userName
+  const userFullName: any = userName
     .map((items: any) => {
       return {
         id: items.id,
@@ -97,7 +103,7 @@ export default function Main(props: Props) {
     .map((items) => {
       return items.firstName + " " + items.lastName;
     });
-  console.log("фулнейм", arr1);
+  console.log("фулнейм", userFullName);
   // useEffect(() => {
   //   window.scroll(0, 1000);
   // }, []);
@@ -108,17 +114,18 @@ export default function Main(props: Props) {
       window.scroll(0, 1000);
     }, []);
 
-    const arr2: any = chat.map((items: any) => {
+    const convesationMessages: any = chat.map((items: any) => {
       return {
+        items: items,
         text: items.text,
         date: items.date,
       };
     });
-    console.log("вот", arr2);
+    console.log("вот", convesationMessages);
 
     return (
-      <>
-        {arr2.map((i: any) => (
+      <ChatDiv>
+        {convesationMessages.map((i: any) => (
           <List>
             <StyledListItem>
               <ListItemText>
@@ -128,7 +135,7 @@ export default function Main(props: Props) {
             </StyledListItem>
           </List>
         ))}
-      </>
+      </ChatDiv>
     );
   }
 
@@ -186,21 +193,21 @@ export default function Main(props: Props) {
           }}
         >
           <Box sx={{ flexGrow: 1, position: "fixed" }}>
-            <AppBar>
-              <Toolbar>
-                <Avatar></Avatar>
-                {/* <List>
+            {/* <AppBar> */}
+            <Toolbar>
+              <Avatar></Avatar>
+              {/* <List>
                   <StyledListItem>
                     <ListItemText></ListItemText>
                   </StyledListItem>
                 </List> */}
-                <Typography>{arr1}</Typography>
-              </Toolbar>
-            </AppBar>
+              <Typography>{userFullName}</Typography>
+            </Toolbar>
+            {/* </AppBar> */}
+            <ChatWindows>
+              <ChatWindow />
+            </ChatWindows>
           </Box>
-          <ChatWindows>
-            <ChatWindow />
-          </ChatWindows>
 
           {/* <ChatWindow>
               {chat.map((items: any, index: any) => (
@@ -229,6 +236,10 @@ export default function Main(props: Props) {
   );
 }
 
+const ChatDiv = styled.div`
+  background-color: black;
+`;
+
 const StyledBox = styled(Box)`
   background-color: #e3f6fc;
 `;
@@ -254,6 +265,7 @@ const StyledListItem = styled(ListItem)`
   align-items: center;
   margin-left: 5px;
   border-radius: 10px;
+  background-color: blue;
 `;
 
 const ChatWindows = styled.div`

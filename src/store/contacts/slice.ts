@@ -32,16 +32,17 @@ interface Contact {
   items?: [];
 }
 
-const token = localStorage.getItem("access_token");
-
+// const token = localStorage.getItem("access_token");
+const token =
+  "vk1.a.o0zjqFWNvsZ8fvUOxMjp7ijsTHTTeNxN_B42xFAyJjpKqmb7FGh3G7Y7uKnceI_sSDIt5p8aHiirIKaStGNadNGYxkrYA0nfR_tPiCto5bvGoWCzC2yypuSvfwCjy1FGGGMRi81loZI9zuu-qcL_Jv4CoduSFBkQuW8GDQx8MybSvWQK1z481vuZE9UayjF0";
 export const fetchContacts = createAsyncThunk<Contact[]>(
   "contacts/fetchContacts",
   async () => {
     const response = await axios.get<Contact[]>(
-      `http://localhost:3500/method/messages.getConversations?access_token=&v=5.131`
+      `http://localhost:3500/method/messages.getConversations?access_token=${token}&v=5.131`
     );
     // @ts-ignore
-    console.log(response.data.response.items);
+    console.log("слайс", response.data.response.items);
     //@ts-ignore
     return response.data.response.items;
   }
